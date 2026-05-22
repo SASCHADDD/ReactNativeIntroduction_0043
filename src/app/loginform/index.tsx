@@ -9,6 +9,7 @@ import {
   Platform 
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Stack } from 'expo-router';
 
 export default function Index() {
   const [username, setUsername] = useState('');
@@ -17,7 +18,16 @@ export default function Index() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        
+        <Stack.Screen 
+            options={{ 
+                title: "",
+                headerLeft: () => (
+                <Text style={{ fontSize: 18, fontWeight: "500", marginLeft: 16 }}>
+                    index
+                </Text>
+                ),
+            }} 
+            />
         <View style={styles.headerContainer}>
           <Text style={styles.title}>Selamat Datang</Text>
           <Text style={styles.subtitle}>Silakan masuk ke akun Anda</Text>
