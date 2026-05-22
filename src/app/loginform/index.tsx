@@ -6,15 +6,26 @@ import {
   TextInput, 
   TouchableOpacity, 
   SafeAreaView, 
-  Platform 
+  Platform, 
+  Alert
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { Stack } from 'expo-router';
+import { router, Stack } from 'expo-router';
 
-export default function Index() {
+const Index = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleLogin = () => {
+    if (!username || !password) {
+      Alert.alert("Perhatian", "Username dan Password tidak boleh kosong!");
+      return;
+    }
+    router.push({
+      pathname: "/dashboard/dashboard", 
+      params: { username: username }
+    });
+  };
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
@@ -53,7 +64,10 @@ export default function Index() {
             secureTextEntry={true} 
           />
 
-          <TouchableOpacity style={styles.loginButton} activeOpacity={0.8}>
+          <TouchableOpacity 
+            onPress={handleLogin}
+            style={styles.loginButton} 
+            activeOpacity={0.8}>
             <Text style={styles.loginButtonText}>Login</Text>
           </TouchableOpacity>
           
@@ -114,7 +128,7 @@ const styles = StyleSheet.create({
     color: '#333',
     paddingVertical: 8,
     borderBottomWidth: 1.5,
-    borderBottomColor: '#2962FF', // Garis bawah biru
+    borderBottomColor: '#2962FF', 
     marginBottom: 24,
   },
   loginButton: {
@@ -146,3 +160,4 @@ const styles = StyleSheet.create({
     elevation: 6,
   },
 });
+export default Index;
