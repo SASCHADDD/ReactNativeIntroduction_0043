@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 24,
     position: 'relative',
+    justifyContent: "center",
   },
   headerContainer: {
     marginTop: 60,
