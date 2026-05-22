@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text,Alert, TextInput, View,TouchableOpacity, StyleSheet,} from "react-native";
+import { Text,Alert, TextInput, View,TouchableOpacity, StyleSheet} from "react-native";
 
 const form = () => {
     const [nama, setNama] = useState('')
@@ -25,6 +25,26 @@ const form = () => {
                     placeholder="Masukkan Nama"
                     value={nama}
                     onChangeText={(text) => setNama(text)}
+                    autoCapitalize="none"
+                />
+            </View>
+            <View style = {styles.inputGroup}>
+                <Text style={styles.label}>Username:</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Masukkan Username"
+                    value={username}
+                    onChangeText={(text) => setUsername(text)}
+                    autoCapitalize="none"
+                />
+            </View>
+            <View style = {styles.inputGroup}>
+                <Text style={styles.label}>Password:</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Masukkan Password"
+                    value={password}
+                    onChangeText={(text) => setPassword(text)}
                     secureTextEntry={true}
                     autoCapitalize="none"
                 />
